@@ -1,3 +1,6 @@
+"""
+StreamProcessor Class file
+"""
 
 
 class StreamProcessor(object):
@@ -47,8 +50,9 @@ class StreamProcessor(object):
 
     def process(self):
         """
-        TODO: Implement the `process` method, as described above.
-        
+        Reads stream counting digits and totalling
+        data.
+
         :return: int
         """
 
@@ -56,12 +60,17 @@ class StreamProcessor(object):
                    # together.
         total = 0  # The running total of sums.
 
-        # TODO: WRITE CODE HERE:
+        while True:
 
-        # Just some example syntax, you can read two digits from the head of the
-        # stream using the following code:
-        #
-        # digits = self._stream.read(2)
+            digits = self._stream.read(2)
 
+            if not digits or len(digits) < 2:
+                break
+
+            total += int(digits)
+            count += 1
+
+            if count == 10 or total >= 200:
+                break
 
         return count
